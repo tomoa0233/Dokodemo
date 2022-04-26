@@ -49,8 +49,18 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'devise'
+gem 'webdrivers'
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'dotenv-rails'
+gem 'ransack'
+group :development do
+  gem 'rubocop', require: false
+end
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem 'refile-mini_magick'
