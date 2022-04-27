@@ -1,0 +1,21 @@
+<%= form_with model: @shop do |f| %>
+<h3>ショップリクエスト</h3>
+
+ショップ名
+<%= f.text_field :shop_name %>
+住所
+<%= f.text_field :address %>
+HP
+<%= f.text_field :shop_hp %>
+電話番号
+<%= f.text_field :telephone %>
+メールアドレス
+<%= f.text_field :email %>
+説明文
+<%= f.text_area :introduction %>
+画像
+<%= f.file_field :image %>
+<%= f.submit '投稿' %>
+
+
+<% end %>
