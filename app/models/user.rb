@@ -19,5 +19,7 @@ class User < ApplicationRecord
    woman: 1
  }
 
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :shops, dependent: :destroy
 end
