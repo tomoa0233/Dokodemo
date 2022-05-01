@@ -1,2 +1,15 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<%= attachment_image_tag @shop, :image, format: "jpeg", size: "400x300" %>
+<%= @shop.name %>
+<%= @shop.address %>
+<%= @shop.shop_hp %>
+<%= @shop.telephone %>
+
+<% @comment_latest3.each do |comment| %>
+ <%# if comment.favorited_by?(current_user) %>
+  ♥<%#= comment.favorites.count %> いいね
+ <%# else %>
+  ♡<%#= comment.favorites.count %> いいね
+ <%# end %>
+ <%= comment.body %>
+<% end %>
+<%= link_to ">もっと見る", shop_comments_path(@shop) %>

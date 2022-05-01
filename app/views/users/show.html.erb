@@ -1,2 +1,53 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+ <div class="row">
+  <h2>マイページ</h2>
+ </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">名前</div>
+    <div class="col-lg-2"><%= @user.name %></div>
+    <div class="col-lg-1"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">年代</div>
+    <div class="col-lg-2"><%= @user.age_i18n %></div>
+    <div class="col-lg-5"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">性別</div>
+    <div class="col-lg-2"><%= @user.sex_i18n %></div>
+    <div class="col-lg-5"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">電話番号</div>
+    <div class="col-lg-4"><%= @user.telephone %></div>
+    <div class="col-lg-5"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">メールアドレス</div>
+    <div class="col-lg-4"><%= @user.email %></div>
+    <div class="col-lg-5"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">説明文</div>
+    <div class="col-lg-4"><%= @user.introduction %></div>
+    <div class="col-lg-5"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-2"><%= link_to "編集する", edit_user_path(@user), class: "btn btn-sm btn-success" %></div>
+    <!--<div class="col-lg-1"></div>-->
+    <div class="col-lg-3"><%= link_to "退会する", users_unsubscribe_path, class: "btn btn-sm btn-danger"%></div>
+    <div class="col-lg-3"></div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-4"><%= link_to "ショップリクエストを送る", new_shop_path, class: "btn btn-sm btn-primary"%></div>
+    <div class="col-lg-5"></div>
+  </div>
+</div>

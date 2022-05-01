@@ -1,0 +1,14 @@
+  ja:
+    enums:
+      user:
+        age:
+          less_fifty: "50代以下"
+          fifty: "50代"
+          sixty: "60代"
+          seventy: "70代"
+          eighty: "80代"
+          ninety: "90代"
+          over_ninety: "90代以上"
+        sex:
+          man: "男"
+          woman: "女"

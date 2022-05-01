@@ -8,7 +8,8 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.string :telephone, null: false
       t.float :lat
       t.float :lon
-      t.string :image, null: false
+      t.string :image_id, null: false
+      t.integer :user_id, null: false
       t.boolean :published, null: false, default: false
       t.timestamps
     end

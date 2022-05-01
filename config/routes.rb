@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   patch 'users/withdraw'
   get 'users/mypage' => 'users#show'
   resources :users, only: [:edit, :update]
-  resources :shops, only: [:new, :index, :show, :create]
-  resources :comments
+  resources :shops, only: [:new, :index, :show, :create] do
+    resources :comments
+  end
+  resource :favorites, only: [:crete, :destroy]
   root to: 'homes#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

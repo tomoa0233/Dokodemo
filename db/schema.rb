@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_26_111906) do
+ActiveRecord::Schema.define(version: 2022_04_26_134600) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "shop_id", null: false
     t.string "image"
     t.text "body", null: false
@@ -22,13 +21,19 @@ ActiveRecord::Schema.define(version: 2022_04_26_111906) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "homes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shop_tags", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,7 +46,8 @@ ActiveRecord::Schema.define(version: 2022_04_26_111906) do
     t.string "telephone", null: false
     t.float "lat"
     t.float "lon"
-    t.string "image", null: false
+    t.string "image_id", null: false
+    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

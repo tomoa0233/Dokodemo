@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-  belongs_to :shop_tag
+  has_many :shop_tags
+  has_many :shops, through: :shop_tags
 end

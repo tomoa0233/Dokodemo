@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -17,10 +17,18 @@
 
 
 
-
+   <li>
+     <%= link_to "Top", root_path %>
+   </li>
+   <li>
+     <%= link_to "ショップ一覧", shops_path %>
+   </li>
 
 
     <% if user_signed_in? %>
+     <li>
+       <%= link_to "ショップリクエスト", new_shop_path %>
+     </li>
      <li>
        <%= link_to "マイページ", users_mypage_path %>
      </li>
@@ -36,6 +44,8 @@
      </li>
     <% end %>
    </header>
+
+   <%= yield %>
    <footer>
     <div class="container mt-5">
   	 <div class="row">
@@ -45,6 +55,5 @@
      </div>
     </div>
    </footer>
-  <%= yield %>
  </body>
 </html>
