@@ -1,0 +1,10 @@
+<button type="button" class="btn btn-outline-secondary"><%= @tag.name %></button>
+
+<div>
+  <% @tag.shops.each do |shop| %>
+   <span>
+     <%= attachment_image_tag shop, :image, format: "jpeg", size: "300x200" %><br>
+     <%= link_to shop.name, shop_path(shop) %><br>
+   </span>
+  <% end %>
+</div>

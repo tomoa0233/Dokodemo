@@ -7,6 +7,7 @@ class ShopsController < ApplicationController
   def index
     @shops = Shop.all
     # where(published: true)
+    @tags = Tag.first(5)
   end
 
   def show
@@ -16,18 +17,35 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-
-    @shop.save
-    tag = Tag.find(1)
-
-    @shop.tags << tag
-    # binding.pry
-    redirect_to shop_path(@shop)
+    if @shop.save
+       @shop.save_tags(params[:shop][:tag])
+       redirect_to shop_path(@shop)
+    else
+      render :new
+    end
   end
 
-  private
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
+  def update
+    @shop = Shop.find(params[:id])
+    if @shop.update(shop_params)
+      redirect_to shop_path(@shop)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @shop = Shop.find(params[:id])
+    @shop.destroy
+    redirect_to shops_path
+  end
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :shop_hp, :telephone, :email, :introduction, :image).merge(user_id: current_user.id)
+    params.require(:shop).permit(:name, :address, :shop_hp, :telephone, :email, :introduction, :image, tag_ids: []).merge(user_id: current_user.id)
   end
+
 end

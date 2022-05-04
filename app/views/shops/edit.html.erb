@@ -1,5 +1,5 @@
-<%= form_with model: @shop do |f| %>
-<h3>ショップリクエスト</h3>
+<%= form_with model: @shop, url: shop_path(@shop), method: :patch do |f| %>
+<h3>ショップ編集</h3>
 ショップ名
 <%= f.text_field :name %><br>
 住所
@@ -25,12 +25,8 @@ HP
 </div>
 <%= f.text_field :tag, value: @shop.tags.pluck(:name) %>
 <small>,で区切ることで複数指定できます。</small><br>
-<% if current_user.is_admin? %>
 
-<% else %>
-<% end %>
-
-<%= f.submit '投稿' %>
+<%= f.submit '保存' %>
 
 
 <% end %>

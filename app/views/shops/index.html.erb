@@ -1,6 +1,24 @@
-<div>
- <% @shops.each do |shop| %>
-   <%= attachment_image_tag shop, :image, format: "jpeg", size: "400x300" %>
-   <%= link_to shop.name, shop_path(shop.id) %>
- <% end %>
+<div class="contain">
+<div class="row">
+ <div class="col-lg-8"></div>
+</div>
+ <div class="row justify-content-md-center mb-4">
+  <% @tags.each do |tag| %>
+ <span>
+  <%= link_to "#{tag.name} (  #{tag.shops.count} )", tag_path(tag), class: "btn btn-outline-secondary" %>
+ </span>
+<% end %>
+<%= link_to 'もっと見る', tags_path %>
+ </div>
+  <div class="row">
+   <% @search_shops.each do |shop| %>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3">
+     <%= attachment_image_tag shop, :image, format: "jpeg", size: "300x200" %><br>
+     <%= link_to shop.name, shop_path(shop.id) %><br>
+    </div>
+   <% end %>
+   <div class="col-lg-1"></div>
+  </div>
+
 </div>

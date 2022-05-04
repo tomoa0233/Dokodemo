@@ -1,21 +1,58 @@
+<div class="contain">
+ <div class="row">
+  <div class="col-lg-2"></div>
 
-
+ </div>
+</div>
 <%= attachment_image_tag @shop, :image, format: "jpeg", size: "400x300" %>
-<%= @shop.name %>
-<%= @shop.address %>
-<%= @shop.shop_hp %>
-<%= @shop.telephone %>
+<%= @shop.name %><br>
+<% @shop.tags.each do |tag| %>
+ <span>
+  <%= link_to tag.name, tag_path(tag), class: "btn btn-outline-secondary" %>
+ </span>
+<% end %><br>
+<%= @shop.address %><br>
+<%= @shop.shop_hp %><br>
+<%= @shop.telephone %><br>
+
+<%= link_to "編集", edit_shop_path(@shop) %>
+<%= link_to "削除", shop_path(@shop), method: :delete %>
+<div id="map"></div>
+<style>
+ #map {
+  height: 400px;
+  width: 70%;
+ }
+</style>
+<script>
+function initMap() {
+
+  <% if @shop.lat && @shop.lon %>
+  var uluru = {lat: <%= @shop.lat %>, lng: <%= @shop.lon %>};
+  var map = new google.maps.Map(document.getElementById('map'),{
+  zoom: 16,
+  center: uluru
+  });
+  var marker = new google.maps.Marker({
+   position: uluru,
+   map: map
+  });
+  <% end %>
+    }
+</script>
 
 <% @comment_latest3.each do |comment| %>
  <% if comment.favorited_by?(current_user) %>
   <%= link_to comment_favorites_path(comment.id), method: :delete do %>
-   ♥<%= comment.favorites.count %> いいね
+   ♥<%= comment.favorites.count %> いいね<br>
   <% end %>
  <% else %>
   <%= link_to comment_favorites_path(comment.id), method: :post do %>
-   ♡<%= comment.favorites.count %> いいね
+   ♡<%= comment.favorites.count %> いいね<br>
   <% end %>
  <% end %>
- <%= comment.body %>
+ <%= comment.body %><br>
 <% end %>
 <%= link_to ">もっと見る", shop_comments_path(@shop) %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>

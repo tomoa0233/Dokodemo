@@ -1,0 +1,7 @@
+<h2>タグ</h2>
+
+<% @tags.each do |tag| %>
+ <span>
+  <%= link_to "#{tag.name} (  #{tag.shops.count} )", tag_path(tag), class: "btn btn-outline-secondary" %>
+ </span>
+<% end %>

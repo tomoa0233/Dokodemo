@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :liked_users, through: :favorites, source: :user
+
   belongs_to :shop
 
   def favorited_by?(user)

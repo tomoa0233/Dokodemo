@@ -13,4 +13,7 @@
 
  <%= comment.body %>
  <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+ <% if comment.user == current_user %>
+  <%= link_to "削除", comment_path(comment.id), method: :delete %>
+ <% end %>
 <% end %>

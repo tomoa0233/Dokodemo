@@ -4,9 +4,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # shop = Shop.find(params[:shop_id])
     @comment = Comment.new(comment_params)
-    # binding.irb
     @comment.shop_id = params[:shop_id]
     @comment.user_id = current_user.id
     if @comment.save
@@ -17,23 +15,12 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
-
-  end
-
-  def edit
-
-  end
-
-  # def show
-  # end
-
-  def update
+    @comments = Comment.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to shop_path(@shop)
+    redirect_to shop_path(shop_id: shop.id)
   end
 
   def comment_params
