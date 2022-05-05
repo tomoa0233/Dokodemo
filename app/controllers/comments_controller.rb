@@ -19,8 +19,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to shop_path(shop_id: shop.id)
+    @comment = Comment.find(params[:id])
+    @shop_id = @comment.shop_id
+    @comment.destroy
+    redirect_to shop_path(@shop_id)
   end
 
   def comment_params

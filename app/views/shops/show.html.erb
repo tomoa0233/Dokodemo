@@ -15,8 +15,11 @@
 <%= @shop.shop_hp %><br>
 <%= @shop.telephone %><br>
 
-<%= link_to "編集", edit_shop_path(@shop) %>
-<%= link_to "削除", shop_path(@shop), method: :delete %>
+<% if current_user.is_admin? %>
+ <%= link_to "編集", edit_shop_path(@shop) %>
+ <%= link_to "削除", shop_path(@shop), method: :delete, data: { confirm: "ショップを削除してもよろしいですか？" } %>
+<% else %>
+<% end %>
 <div id="map"></div>
 <style>
  #map {
@@ -52,6 +55,7 @@ function initMap() {
   <% end %>
  <% end %>
  <%= comment.body %><br>
+ <%= comment.user.name %><br>
 <% end %>
 <%= link_to ">もっと見る", shop_comments_path(@shop) %>
 

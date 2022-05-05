@@ -12,7 +12,7 @@
 
   <body>
    <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
      <div class="container">
       <%= link_to "Dokodemo", root_path, class: "navbar__brand navbar__mainLogo" %>
    <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -27,13 +27,17 @@
        <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
       </span>
   <% end %>
-
-
+<li class="list-unstyled">
+       <%= link_to "お問い合わせ", contacts_new_path %>
+     </li>
+<li class="list-unstyled">
+       <%= link_to "ショップ一覧", shops_path %>
+     </li>
 
 
 <% if user_signed_in? %>
      <li class="list-unstyled">
-       <%= link_to "ショップリクエスト", new_shop_path %>
+       <%= link_to "ショップ投稿", new_shop_path %>
      </li>
      <li class="list-unstyled">
        <%= link_to "マイページ", users_mypage_path %>
