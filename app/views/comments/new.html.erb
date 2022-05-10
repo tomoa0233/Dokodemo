@@ -1,4 +1,18 @@
-<%= form_with model: @comment, url: shop_comments_path, method: :post do |f| %>
- <%= f.text_area :body, rows: '5', placeholder: "コメントをここに" %>
- <%= f.submit "送信する" %>
+<div class="container">
+ <div class="row mt-4">
+  <div class="col-lg-1"></div>
+  <h3>コメント投稿</h3>
+ </div>
+ <%= form_with model: @comment, url: shop_comments_path, method: :post do |f| %>
+ <div class="row mt-4">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6"><%= f.text_area :body, rows: '5', placeholder: "コメントをここに" %></div>
+  <div class="col-lg-3"></div>
+ </div>
+ <div class="row mt-2">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-2"><%= f.submit "送信する", class: "btn btn-primary" %></div>
+  <div class="col-lg-5"></div>
+ </div>
+</div>
 <% end %>

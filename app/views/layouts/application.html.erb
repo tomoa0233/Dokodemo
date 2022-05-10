@@ -11,10 +11,11 @@
   </head>
 
   <body>
-   <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
+    <header class="sticky-top">
+    <div class="border-bottom border-secondary">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white text-dark">
      <div class="container">
-      <%= link_to "Dokodemo", root_path, class: "navbar__brand navbar__mainLogo" %>
+      <%= link_to "Dokodemo", root_path, class: "navbar__brand navbar__mainLogo text-dark" %>
    <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,41 +23,42 @@
     <ul class="navbar-nav ml-auto">
     <li class="nav-item">
         <%= search_form_for @search, url: shops_path do |f| %>
-     <%= f.search_field :name_cont, placeholder: "ショップ名を検索" %>
-      <span class="input-group-btn">
+     <%= f.search_field :name_cont, placeholder: "ショップ名を検索", class: "rounded border border-secondary mt-1" %>
+      <span class="input-group-btn mr-3">
        <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
       </span>
   <% end %>
-<li class="list-unstyled">
-       <%= link_to "お問い合わせ", contacts_new_path %>
+<li class="list-unstyled mr-3 mt-2">
+       <%= link_to "お問い合わせ", contacts_new_path, class: "text-dark" %>
      </li>
-<li class="list-unstyled">
-       <%= link_to "ショップ一覧", shops_path %>
+<li class="list-unstyled mr-3 mt-2">
+       <%= link_to "ショップ一覧", shops_path, class: "text-dark" %>
      </li>
 
 
 <% if user_signed_in? %>
-     <li class="list-unstyled">
-       <%= link_to "ショップ投稿", new_shop_path %>
+     <li class="list-unstyled mr-3 mt-2">
+       <%= link_to "ショップ投稿", new_shop_path, class: "text-dark" %>
      </li>
-     <li class="list-unstyled">
-       <%= link_to "マイページ", users_mypage_path %>
+     <li class="list-unstyled mr-3 mt-2">
+       <%= link_to "マイページ", users_mypage_path, class: "text-dark" %>
      </li>
-     <li class="list-unstyled">
-       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+     <li class="list-unstyled mr-3 mt-2">
+       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-dark" %>
      </li>
    <% else %>
-     <li class="list-unstyled">
-       <%= link_to "新規登録", new_user_registration_path %>
+     <li class="list-unstyled mr-3 mt-2">
+       <%= link_to "新規登録", new_user_registration_path, class: "text-dark" %>
      </li>
-     <li class="list-unstyled">
-       <%= link_to "ログイン", new_user_session_path %>
+     <li class="list-unstyled mr-3 mt-2">
+       <%= link_to "ログイン", new_user_session_path, class: "text-dark" %>
      </li>
     <% end %>
   </ul>
 </div>
 </div>
 </nav>
+</div>
    </header>
 
    <%= yield %>

@@ -1,24 +1,19 @@
-<div class="contain">
-<div class="row">
- <div class="col-lg-8"></div>
-</div>
- <div class="row justify-content-md-center mb-4">
+ <div class="row justify-content-md-center pt-4 pb-4", style="background-color: #7d7d7d">
   <% @tags.each do |tag| %>
  <span>
-  <%= link_to "#{tag.name} (  #{tag.shops.count} )", tag_path(tag), class: "btn btn-outline-secondary" %>
+  <%= link_to "#{tag.name} ( #{tag.shops.count} )", tag_path(tag), class: "btn btn-info mr-2" %>
  </span>
 <% end %>
-<%= link_to 'もっと見る', tags_path %>
+<%= link_to 'もっと見る', tags_path, class: "text-light ml-2 mt-2" %>
  </div>
-  <div class="row">
+<div class="container">
+  <div class="row pt-4">
    <% @search_shops.each do |shop| %>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-     <%= attachment_image_tag shop, :image, format: "jpeg", size: "300x200" %><br>
-     <%= link_to shop.name, shop_path(shop.id) %><br>
+    <div class="col-lg-4 mt-4 mb-4">
+     <%= attachment_image_tag shop, :image, format: "jpeg", size: "300x200", class: "rounded" %><br>
+     <%= link_to shop.name, shop_path(shop.id), class: "text-info" %><br>
     </div>
    <% end %>
-   <div class="col-lg-1"></div>
   </div>
 
 </div>

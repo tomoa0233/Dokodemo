@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact =Contact.new(contact_params)
-    if @contact.save
+    if @contact.valid
       ContactMailer.contact_mail(@contact).deliver
       flash[:success] = "お問い合わせを受け付けました"
       redirect_to root_path
@@ -13,11 +13,11 @@ class ContactsController < ApplicationController
       render :new
     end
   end
-  
+
   private
-  
+
   def contact_params
     params.require(:contact).permit(:email, :message)
   end
-  
+
 end

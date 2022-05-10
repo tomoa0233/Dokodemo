@@ -1,19 +1,44 @@
-<%= form_with model: @shop do |f| %>
-<h3>ショップ投稿</h3>
-ショップ名
-<%= f.text_field :name %><br>
-住所
-<%= f.text_field :address %><br>
-HP
-<%= f.text_field :shop_hp %><br>
-電話番号
-<%= f.text_field :telephone %><br>
-説明文
-<%= f.text_area :introduction %><br>
-画像
-<%= f.attachment_field :image %><br>
-タグ
-<div class="form-group">
+<div class="container">
+ <div class="row mt-4">
+  <div class="col-lg-1"></div>
+  <h3>ショップ投稿</h3>
+ </div>
+ <%= form_with model: @shop do |f| %>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">ショップ名</div>
+   <div class="col-lg-2"><%= f.text_field :name %></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">住所</div>
+   <div class="col-lg-2"><%= f.text_field :address %></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">HP</div>
+   <div class="col-lg-2"><%= f.text_field :shop_hp %></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">電話番号</div>
+   <div class="col-lg-2"><%= f.text_field :telephone %></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">説明文</div>
+   <div class="col-lg-2"><%= f.text_area :introduction %></div>
+  </div>
+  <div class="row mb-4">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">画像</div>
+   <div class="col-lg-2"><%= f.attachment_field :image %></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">タグ</div>
+   <div class="col-lg-2">
+    <div class="form-group">
  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
   <div class="form-check">
     <%= tag.label class: "form-check-label" do %>
@@ -22,15 +47,20 @@ HP
     <% end %>
   </div>
  <% end %>
-</div>
-<%= f.text_field :tag, value: @shop.tags.pluck(:name) %>
-<small>,で区切ることで複数指定できます。</small><br>
-<% if current_user.is_admin? %>
+   </div>
+  </div>
+ </div>
+ <div class="row mb-4">
+   <div class="col-lg-3"></div>
+   <div class="col-lg-2">タグの追加</div>
+   <div class="col-lg-5"><%= f.text_field :tag, value: @shop.tags.pluck(:name) %>
+   <small>,で区切ることで複数指定できます。</small></div>
+  </div>
+  <div class="row mb-2">
+   <div class="col-lg-5"></div>
+   <div class="col-lg-2"><%= f.submit '投稿', class: "btn btn-sm btn-primary" %></div>
+  </div>
 
-<% else %>
-<% end %>
-
-<%= f.submit '投稿' %>
-
+ </div>
 
 <% end %>

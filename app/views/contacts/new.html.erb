@@ -1,16 +1,24 @@
-<h3>お問い合わせ</h3
-
-<%= form_with model: @contact, url: root_path do |f| %>
-
-<div class="form-group">
-<div>送信アドレス</div>
- <%= f.text_field :email, class: 'form-control' %>
+<div class="container">
+ <div class="row mt-4">
+  <div class="col-lg-2"></div>
+   <h3>お問い合わせ</h3>
+ </div>
+ <%= form_with model: @contact, url: root_path do |f| %>
+ <div class="row mt-4">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-2">送信アドレス</div>
+  <div class="col-lg-4"><%= f.text_field :email, class: 'form-control' %></div>
+  <div class="col-lg-3"></div>
+ </div>
+ <div class="row mt-4">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-2">お問い合わせ内容</div>
+  <div class="col-lg-4"><%= f.text_area :message, class: 'form-control' %></div>
+  <div class="col-lg-3"></div>
+ </div>
+ <div class="row mt-4">
+  <div class="col-lg-6"></div>
+  <div class="col-lg-2"><%= f.submit '送信', class: "btn btn-primary" %></div>
+ </div>
 </div>
-
-<div class="form-group">
-<div>お問い合わせ内容</div>
- <%= f.text_area :message, class: 'form-control' %>
-</div>
-
-<%= f.submit '送信' %>
 <% end %>
