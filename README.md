@@ -31,6 +31,8 @@
 福祉専門職がお店の環境を検討したい時。
 
 ## 設計書
+https://docs.google.com/spreadsheets/d/1qdsldO122iNEnh0efCqQccSL-Azlay9bo-3kyHuKJ5o/edit#gid=0
+file:///C:/Users/%E3%81%A8%E3%82%82%E3%81%BF/Downloads/CamScanner%2004-25-2022%2022.09.pdf
 
 ## チャレンジ要素一覧
 

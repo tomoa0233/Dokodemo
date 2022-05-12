@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'contacts/new'
-  get 'contacts/create'
   devise_for :users
   get 'users/unsubscribe'
   patch 'users/withdraw'
   get 'users/mypage' => 'users#show'
+  resources :contacts, only: [:new, :create]
   resources :users, only: [:edit, :update]
   resources :shops do
     collection do

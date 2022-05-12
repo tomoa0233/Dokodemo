@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @comments = Comment.includes(:liked_users).sort { |a, b| b.liked_users.size <=> a.liked_users.size }
   end
 
   def destroy

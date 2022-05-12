@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-
   def new
     @shop = Shop.new
   end
@@ -18,8 +17,8 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-       @shop.save_tags(params[:shop][:tag])
-       redirect_to shop_path(@shop)
+      @shop.save_tags(params[:shop][:tag])
+      redirect_to shop_path(@shop)
     else
       render :new
     end
@@ -47,5 +46,4 @@ class ShopsController < ApplicationController
   def shop_params
     params.require(:shop).permit(:name, :address, :shop_hp, :telephone, :email, :introduction, :image, tag_ids: []).merge(user_id: current_user.id)
   end
-
 end

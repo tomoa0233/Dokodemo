@@ -3,6 +3,14 @@
   <div class="col-lg-1"></div>
   <h3>ショップ投稿</h3>
  </div>
+ <% if @shop.errors.any? %>
+  <%= @shop.errors.count %>件のエラーが発生しました
+   <ul>
+    <% @shop.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+   </ul>
+ <% end %>
  <%= form_with model: @shop do |f| %>
   <div class="row mb-2">
    <div class="col-lg-3"></div>

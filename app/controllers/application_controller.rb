@@ -1,16 +1,17 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :user_state, only: [:create], if: :devise_controller?
   before_action :set_search
 
   def after_sign_in_path_for(resource)
-   users_mypage_path
+    users_mypage_path
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   def set_search
     @search = Shop.ransack(params[:q])
     @search_shops = @search.result

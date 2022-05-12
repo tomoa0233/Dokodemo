@@ -3,6 +3,14 @@
   <div class="col-lg-1"></div>
   <h3>コメント投稿</h3>
  </div>
+ <% if @comment.errors.any? %>
+  <%= @comment.errors.count %>件のエラーが発生しました
+   <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+   </ul>
+ <% end %>
  <%= form_with model: @comment, url: shop_comments_path, method: :post do |f| %>
  <div class="row mt-4">
   <div class="col-lg-3"></div>

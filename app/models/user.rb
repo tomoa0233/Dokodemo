@@ -11,16 +11,22 @@ class User < ApplicationRecord
     seventy: 3,
     eighty: 4,
     ninety: 5,
-    over_ninety: 6
+    over_ninety: 6,
   }
 
- enum sex: {
-   man: 0,
-   woman: 1
- }
+  enum sex: {
+    man: 0,
+    woman: 1,
+  }
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :comment
   has_many :shops, dependent: :destroy
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :age, presence: true
+  validates :sex, presence: true
+  validates :telephone, presence: true
 end

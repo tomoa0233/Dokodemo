@@ -76,10 +76,10 @@ Rails.application.configure do
   config.hosts << "fccfef4589de408c86fb1c82801f223b.vfs.cloud9.ap-northeast-1.amazonaws.com"
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: "tomoa0233@gmail.com" }
+  config.action_mailer.default_url_options = { host: "amuronaoymt@gmail.com" }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    user_name: ENV['SEND_MAIL'],
+    user_name: ENV['USER_NAME'],
     password: ENV["MAIL_PASSWOLD"],
     domain: 'gmail.com',
     address: 'smtp.gmail.com',
