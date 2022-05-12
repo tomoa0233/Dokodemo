@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -34,7 +34,7 @@ group :development, :test do
 end
 
 group :development do
-    gem 'rubocop', require: false
+  gem 'rubocop-airbnb'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -59,6 +59,9 @@ gem 'devise'
 gem 'webdrivers'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 gem 'ransack'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
