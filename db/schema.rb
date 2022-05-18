@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2022_05_05_042530) do
   create_table "comments", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.integer "user_id", null: false
-    t.string "image"
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -57,7 +56,6 @@ ActiveRecord::Schema.define(version: 2022_05_05_042530) do
     t.float "lon"
     t.string "image_id", null: false
     t.integer "user_id", null: false
-    t.boolean "published", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

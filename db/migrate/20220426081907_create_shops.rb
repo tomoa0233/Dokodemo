@@ -10,7 +10,6 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.float :lon
       t.string :image_id, null: false
       t.integer :user_id, null: false
-      t.boolean :published, null: false, default: false
       t.timestamps
     end
   end
