@@ -45,11 +45,8 @@
  <div class="row mt-4">
   <div class="col-lg-5">
   </div>
-   <% if current_user.is_admin? || post_shop.user == current_user? %>
     <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-sm btn-success mr-4" %>
     <%= link_to "削除", shop_path(@shop), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "ショップを削除してもよろしいですか？" } %>
-   <% else %>
-   <% end %>
  </div>
  <div class="row mt-4 mb-4">
   <div class="col-lg-2">
