@@ -5,13 +5,16 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   attachment :image
-  
-  validates :name, presence: true
-  validates :introduction, presence: true
-  validates :shop_hp, presence: true
-  validates :address, presence: true
-  validates :telephone, presence: true
+
+  validates :name, presence: true, length: { minimum: 1 }
+  validates :introduction, presence: true, length: { minimum: 5 }
+  VALID_HP_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :shop_hp, presence: true, format: { with: VALID_HP_REGEX }
+  validates :address, presence: true, length: { minimum: 10 }
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  validates :telephone, presence: true, format: { with: VALID_PHONE_REGEX }
   validates :image, presence: true
+  validates :tag, acceptance: true
 
   geocoded_by :address, latitude: :lat, longitude: :lon
   after_validation :geocode

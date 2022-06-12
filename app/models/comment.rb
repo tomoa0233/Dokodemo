@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
 
   belongs_to :shop
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { minimum: 5 }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

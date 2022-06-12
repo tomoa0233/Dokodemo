@@ -1,17 +1,17 @@
 class ShopsController < ApplicationController
+ before_action :find_shop, :only => [:show, :edit, :update, :destroy]
+
   def new
     @shop = Shop.new
   end
 
   def index
     @shops = Shop.all
-    # where(published: true)
     @tags = Tag.first(5)
   end
 
   def show
-    @shop = Shop.find(params[:id])
-    @comment_latest3 = Comment.first(3)
+    @comment_latest3 = @shop.comments.first(3)
   end
 
   def create
@@ -25,11 +25,9 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @shop = Shop.find(params[:id])
   end
 
   def update
-    @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
       redirect_to shop_path(@shop)
     else
@@ -38,10 +36,13 @@ class ShopsController < ApplicationController
   end
 
   def destroy
-    @shop = Shop.find(params[:id])
     @shop.destroy
     redirect_to shops_path
   end
+
+  def find_shop; @shop = Shop.find(params[:id]); end
+
+  private
 
   def shop_params
     params.require(:shop).permit(:name, :address, :shop_hp, :telephone, :email, :introduction, :image, tag_ids: []).merge(user_id: current_user.id)

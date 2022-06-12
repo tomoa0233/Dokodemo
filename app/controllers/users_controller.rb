@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
+  before_action :find_user, :only => [:edit, :update]
+
   def show
     @user = current_user
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to users_mypage_path
     else
@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+
+  def find_user; @user = User.find(params[:id]); end
 
   private
 
