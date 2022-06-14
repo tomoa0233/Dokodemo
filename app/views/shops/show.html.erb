@@ -85,11 +85,11 @@ function initMap() {
 
      <% if comment.favorited_by?(current_user) %>
       <%= link_to comment_favorites_path(comment.id), method: :delete do %>
-       ♥<%= comment.favorites.count %><br>
+       ♥<%= comment.favorites.size %><br>
       <% end %>
      <% else %>
       <%= link_to comment_favorites_path(comment.id), method: :post do %>
-       ♡<%= comment.favorites.count %><br>
+       ♡<%= comment.favorites.size %><br>
       <% end %>
      <% end %>
     <div class="mx-auto pt-4 pl-4 pr-4 pb-3">

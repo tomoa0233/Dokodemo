@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
   def show
@@ -27,11 +26,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def find_user; @user = User.find(params[:id]); end
-
   def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+      redirect_to(root_path) unless @user == current_user
   end
 
   private
