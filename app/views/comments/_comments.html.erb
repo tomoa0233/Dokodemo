@@ -1,0 +1,22 @@
+ <% comments.each do |comment| %>
+  <div class="row mt-4">
+   <div class="col-lg-3">
+   </div>
+   <div class="col-lg-6 border border-info rounded pt-2">
+
+    <td id="favorite_buttons<%= comment.id %>">
+     <%= render "favorites/favorite", comment: comment %>
+    </td>
+    <div class="mx-auto pt-4 pl-4 pr-4 pb-3">
+     <%= comment.body %><br>
+    </div>
+    <div class="float-right pb-2 pr-4 text-secondary">
+     <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+     <%= comment.user.name %>
+     <% if comment.user == current_user %>
+      <%= link_to "削除", comment_path(comment.id), method: :delete, remote: true, class: "text-danger", data: { confirm: "コメントを削除しますか？" } %>
+     <% end %><br>
+    </div>
+   </div>
+  </div>
+ <% end %>

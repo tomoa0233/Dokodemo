@@ -3,38 +3,74 @@
   <div class="col-lg-1"></div>
   <div class="col-lg-9">
    <h3>コメント(全<%= @comments.size %>件)</h3>
-   <p class="float-right"><%= link_to "投稿する", new_shop_comment_path, class: "btn btn-sm btn-primary" %></p>
+
+   <div class="row mt-4">
+    <div class="col-lg-3">
+     <!-- Button trigger modal -->
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      新規投稿
+     </button>
+    </div>
+    <div class="col-lg-9 comments">
+     <%= render "comments", comments: @comments %>
+    </div>
+   </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">コメントを投稿</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with model: @comment, remote: true do |f| %>
+      <div class="modal-body">
+        <div class="form_group">
+         <div id="comments-error">
+           <%= render "error_messages", model: f.object %>
+         </div>
+         <%= f.text_area :body, rows: "5", placeholder: "コメントをここに" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+        <%= f.submit "送信する", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+   <!--<p class="float-right"><%#= link_to "投稿する", new_shop_comment_path, class: "btn btn-sm btn-primary" %></p>-->
   </div>
  </div>
 
-  <% @comments.each do |comment| %>
-    <div class="row mt-4">
-   <div class="col-lg-3">
-   </div>
-   <div class="col-lg-6 border border-info rounded pt-2">
-     <% if comment.favorited_by?(current_user) %>
-      <%= link_to comment_favorites_path(comment.id), method: :delete do %>
-      ♥<%= comment.favorites.size %><br>
-     <% end %>
-     <% else %>
-      <%= link_to comment_favorites_path(comment.id), method: :post do %>
-      ♡<%= comment.favorites.size %><br>
-     <% end %>
-    <% end %>
-    <div class="mx-auto pt-4 pl-4 pr-4 pb-3">
-     <%= comment.body %><br>
-    </div>
-    <div class="float-right pb-2 pr-4 text-secondary">
-     <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-     <%= comment.user.name %>
-     <% if comment.user == current_user %>
-      <%= link_to "削除", comment_path(comment.id), method: :delete, class: "text-danger", data: { confirm: "コメントを削除しますか？" } %>
-     <% end %><br>
-    </div>
-   </div>
-  </div>
- <% end %>
-</div>
+  <!--<%# @comments.each do |comment| %>-->
+  <!--  <div class="row mt-4">-->
+  <!-- <div class="col-lg-3">-->
+  <!-- </div>-->
+  <!-- <div class="col-lg-6 border border-info rounded pt-2">-->
+
+  <!--  <td id="favorite_buttons<%#= comment.id %>">-->
+  <!--   <%#= render "favorites/favorite", comment: comment %>-->
+  <!--  </td>-->
+  <!--  <div class="mx-auto pt-4 pl-4 pr-4 pb-3">-->
+  <!--   <%#= comment.body %><br>-->
+  <!--  </div>-->
+  <!--  <div class="float-right pb-2 pr-4 text-secondary">-->
+  <!--   <%#= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>-->
+  <!--   <%#= comment.user.name %>-->
+  <!--   <%# if comment.user == current_user %>-->
+  <!--    <%#= link_to "削除", comment_path(comment.id), method: :delete, class: "text-danger", data: { confirm: "コメントを削除しますか？" } %>-->
+  <!--   <%# end %><br>-->
+<!--    </div>-->
+<!--   </div>-->
+<!--  </div>-->
+ <%# end %>
+<!--</div>-->
 
 
 
